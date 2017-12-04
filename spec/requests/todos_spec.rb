@@ -12,7 +12,7 @@ RSpec.describe 'Todos API', type: :request do
 
     it 'returns todos' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(0)
+      expect(json.size).to eq(10)
     end
 
     it 'returns status code 200' do
@@ -44,7 +44,7 @@ RSpec.describe 'Todos API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Could'n find Todo/)
+        expect(response.body).to match(/Couldn't find Todo/)
       end
     end
   end
@@ -74,7 +74,7 @@ RSpec.describe 'Todos API', type: :request do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/Validation failed: Created by cant't be blank/)
+        expect(response.body).to match(/Validation failed: Created by can't be blank/)
       end
     end
   end
@@ -98,7 +98,7 @@ RSpec.describe 'Todos API', type: :request do
 
   # Test suite for DELETE /todos/:id
   describe 'DELETE /todos/id' do
-    before { delete "todos/#{todo_id}" }
+    before { delete "/todos/#{todo_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
